@@ -1,0 +1,48 @@
+<div class="container">
+
+	<div class="alert alert-error" ng-show="error">
+	    <span style="color:red">{{errorMessage}}</span>
+	</div>
+
+	NPM : <input type="number" ng-model="mhs.npm" placeholder="Masukan NPM Mahasiswa Disini..." class="form-control"/>
+	<br>
+	Nama : <input type="text" ng-model="mhs.nama" placeholder="Masukan NPM Mahasiswa Disini..." class="form-control" /><br>
+	Jurusan : <input type="text" ng-model="mhs.jurusan" placeholder="Masukan NPM Mahasiswa Disini..." class="form-control" /><br>
+
+	<button class="btn btn-primary" ng-click="tambah(mhs)" ng-hide="editMode" ng-disabled="!mhs.npm || !mhs.nama || !mhs.jurusan">
+		<span class="fa fa-plus fa-lg"></span>
+		 Tambah
+	</button>
+	<button class="btn btn-info" ng-click="editAct(mhs)" ng-show="editMode" ng-disabled="!mhs.npm || !mhs.nama || !mhs.jurusan">
+		<span class="fa fa-edit fa-lg"></span>
+		 Simpan
+	</button>
+
+	<hr>
+	<p></p>
+	<h3>Daftar Mahasiswa</h3>
+	<div class="alert alert-info" ng-show="mahasiswas.length == 0">
+	    Tidak ada Mahasiswa Dalam Daftar
+	</div>	
+	<table class="table table-striped table-hover" ng-show="mahasiswas.length > 0">
+		<th>Id</th>
+		<th>Npm</th>
+		<th>Nama</th>
+		<th>Jurusan</th>
+		<th></th>
+		<tr ng-repeat="mhs in mahasiswas">
+			<td>{{mhs.id}}</td>
+			<td>{{mhs.npm}}</td>
+			<td>{{mhs.nama}}</td>
+			<td>{{mhs.jurusan}}</td>
+			<td>
+				<button type="button" class="btn btn-warning" ng-click="edit(mhs)">
+					<span class="fa fa-edit fa-lg"></span>
+				</button>
+				<button type="button" class="btn btn-danger" ng-click="hapus(mhs.id)">
+					<span class="fa fa-remove fa-lg"></span>
+				</button>				
+			</td>
+		</tr>
+	</table>
+</div>
